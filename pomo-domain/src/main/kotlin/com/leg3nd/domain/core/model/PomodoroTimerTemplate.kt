@@ -2,7 +2,7 @@ package com.leg3nd.domain.core.model
 
 import java.time.OffsetDateTime
 
-data class TimerTemplate(
+data class PomodoroTimerTemplate(
     val id: Long,
     val type: Type,
     val author: User,
