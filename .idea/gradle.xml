@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/pomo-domain" />
+            <option value="$PROJECT_DIR$/pomo-infrastructure" />
           </set>
         </option>
       </GradleProjectSettings>
