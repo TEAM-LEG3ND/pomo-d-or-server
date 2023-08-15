@@ -1,5 +1,5 @@
 package com.leg3nd.domain.ports.database
 
-interface DataSourcePort {
+interface TransactionPort {
     fun <T> runOnTransaction(statement: () -> T): T
 }
