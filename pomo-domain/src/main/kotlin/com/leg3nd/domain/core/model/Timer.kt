@@ -1,11 +1,11 @@
-package com.leg3nd.domain.model
+package com.leg3nd.domain.core.model
 
 import java.time.OffsetDateTime
 
-data class User(
+data class Timer(
     val id: Long,
-    val universalId: String,
-    val nickname: String,
+    val author: User,
+    val template: TimerTemplate,
     val createdAt: OffsetDateTime,
     val updatedAt: OffsetDateTime,
 )
