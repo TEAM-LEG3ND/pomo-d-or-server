@@ -1,4 +1,4 @@
-package com.leg3nd.domain.core.model
+package com.leg3nd.domain.model
 
 import java.time.OffsetDateTime
 
