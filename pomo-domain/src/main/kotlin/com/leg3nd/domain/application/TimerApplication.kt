@@ -28,10 +28,10 @@ class TimerApplication(
         private const val ANONYMOUS_TIMER_TITLE = "빠른 타이머"
     }
 
-    override fun startAnonymousTimer(startAnonymousTimerRequest: StartAnonymousTimerRequest): PomodoroTimer {
+    override suspend fun startAnonymousTimer(startAnonymousTimerRequest: StartAnonymousTimerRequest): PomodoroTimer {
         val user = userService.findByUniversalId(startAnonymousTimerRequest.universalId)
 
-        val startedTimer = transactionPort.runOnTransaction {
+        val startedTimer = transactionPort.withNewTransaction {
             terminateOldTimers(user)
             val now = OffsetDateTime.now()
 
@@ -68,13 +68,13 @@ class TimerApplication(
             )
             pomodoroTimerEventService.create(newTimerStartEvent)
 
-            return@runOnTransaction createdTimer
+            return@withNewTransaction createdTimer
         }
 
         return startedTimer
     }
 
-    override fun startSignedTimer(startSignedTimerRequest: StartSignedTimerRequest): PomodoroTimer {
+    override suspend fun startSignedTimer(startSignedTimerRequest: StartSignedTimerRequest): PomodoroTimer {
         val user = userService.findByUniversalId(startSignedTimerRequest.universalId)
         val signedTimerTemplate = pomodoroTimerTemplateService.findById(startSignedTimerRequest.templateId)
 
@@ -82,7 +82,7 @@ class TimerApplication(
             throw BaseException(BaseException.Type.BAD_REQUEST, "User ID does not match with template author ID")
         }
 
-        val startedTimer = transactionPort.runOnTransaction {
+        val startedTimer = transactionPort.withNewTransaction {
             terminateOldTimers(user)
             val now = OffsetDateTime.now()
 
@@ -106,13 +106,13 @@ class TimerApplication(
             )
             pomodoroTimerEventService.create(newTimerStartEvent)
 
-            return@runOnTransaction createdTimer
+            return@withNewTransaction createdTimer
         }
 
         return startedTimer
     }
 
-    override fun createTimerEvent(createTimerEventRequest: CreateTimerEventRequest): PomodoroTimerEvent {
+    override suspend fun createTimerEvent(createTimerEventRequest: CreateTimerEventRequest): PomodoroTimerEvent {
         val user = userService.findByUniversalId(createTimerEventRequest.universalId)
         val timer = pomodoroTimerService.findById(createTimerEventRequest.timerId)
 
@@ -134,7 +134,7 @@ class TimerApplication(
         return pomodoroTimerEventService.create(newTimerEvent)
     }
 
-    override fun getTimerSnapshotById(timerId: Long): TimerSnapshotResponse {
+    override suspend fun getTimerSnapshotById(timerId: Long): TimerSnapshotResponse {
         val timer = pomodoroTimerService.findById(timerId)
         val events = pomodoroTimerEventService.findByTimer(timer)
 
@@ -144,7 +144,7 @@ class TimerApplication(
         )
     }
 
-    override fun getLastStartedTimerSnapshot(universalId: String): TimerSnapshotResponse {
+    override suspend fun getLastStartedTimerSnapshot(universalId: String): TimerSnapshotResponse {
         val user = userService.findByUniversalId(universalId)
 
         val timer = pomodoroTimerService.findLastStartedByAuthor(user)
