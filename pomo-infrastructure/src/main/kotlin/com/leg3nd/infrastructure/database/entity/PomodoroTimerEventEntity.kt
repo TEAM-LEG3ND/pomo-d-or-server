@@ -7,7 +7,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 class PomodoroTimerEventEntity(id: EntityID<Long>) : BaseEntity(id, PomodoroTimerEvents) {
     companion object : LongEntityClass<PomodoroTimerEventEntity>(PomodoroTimerEvents)
 
-    var author by PomodoroTimerEvents.author
-    var timer by PomodoroTimerEvents.timer
+    var author by UserEntity referencedOn PomodoroTimerEvents.author
+    var timer by PomodoroTimerEntity referencedOn PomodoroTimerEvents.timer
     var type by PomodoroTimerEvents.type
 }

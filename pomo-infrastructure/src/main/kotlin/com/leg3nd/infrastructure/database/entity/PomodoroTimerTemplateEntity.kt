@@ -8,7 +8,7 @@ class PomodoroTimerTemplateEntity(id: EntityID<Long>) : BaseEntity(id, PomodoroT
     companion object : LongEntityClass<PomodoroTimerTemplateEntity>(PomodoroTimerTemplates)
 
     var type by PomodoroTimerTemplates.type
-    var author by PomodoroTimerTemplates.author
+    var author by UserEntity referencedOn PomodoroTimerTemplates.author
     var title by PomodoroTimerTemplates.title
     var workDuration by PomodoroTimerTemplates.workDuration
     var breakDuration by PomodoroTimerTemplates.breakDuration
