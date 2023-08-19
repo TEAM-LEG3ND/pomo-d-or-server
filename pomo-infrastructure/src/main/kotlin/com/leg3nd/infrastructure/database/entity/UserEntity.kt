@@ -1,15 +1,12 @@
 package com.leg3nd.infrastructure.database.entity
 
 import com.leg3nd.infrastructure.database.table.Users
-import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
-class UserEntity(id: EntityID<Long>) : LongEntity(id) {
+class UserEntity(id: EntityID<Long>) : BaseEntity(id, Users) {
     companion object : LongEntityClass<UserEntity>(Users)
 
-    val universalId by Users.universalId
-    val nickname by Users.nickname
-    val createdAt by Users.createdAt
-    val updatedAt by Users.updatedAt
+    var universalId by Users.universalId
+    var nickname by Users.nickname
 }
