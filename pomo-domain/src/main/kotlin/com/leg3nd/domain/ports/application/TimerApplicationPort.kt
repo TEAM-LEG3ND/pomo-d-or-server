@@ -8,13 +8,13 @@ import com.leg3nd.domain.core.model.PomodoroTimer
 import com.leg3nd.domain.core.model.PomodoroTimerEvent
 
 interface TimerApplicationPort {
-    fun startAnonymousTimer(startAnonymousTimerRequest: StartAnonymousTimerRequest): PomodoroTimer
+    suspend fun startAnonymousTimer(startAnonymousTimerRequest: StartAnonymousTimerRequest): PomodoroTimer
 
-    fun startSignedTimer(startSignedTimerRequest: StartSignedTimerRequest): PomodoroTimer
+    suspend fun startSignedTimer(startSignedTimerRequest: StartSignedTimerRequest): PomodoroTimer
 
-    fun createTimerEvent(createTimerEventRequest: CreateTimerEventRequest): PomodoroTimerEvent
+    suspend fun createTimerEvent(createTimerEventRequest: CreateTimerEventRequest): PomodoroTimerEvent
 
-    fun getTimerSnapshotById(timerId: Long): TimerSnapshotResponse
+    suspend fun getTimerSnapshotById(timerId: Long): TimerSnapshotResponse
 
-    fun getLastStartedTimerSnapshot(universalId: String): TimerSnapshotResponse
+    suspend fun getLastStartedTimerSnapshot(universalId: String): TimerSnapshotResponse
 }
