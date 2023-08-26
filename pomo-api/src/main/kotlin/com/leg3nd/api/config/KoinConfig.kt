@@ -3,6 +3,7 @@ package com.leg3nd.api.config
 import io.ktor.server.application.*
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
+import org.koin.fileProperties
 import org.koin.ksp.generated.module
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
@@ -17,5 +18,6 @@ fun Application.configureKoin() {
     install(Koin) {
         slf4jLogger()
         modules(KoinConfig().module, DomainKoinConfig().module, InfraKoinConfig().module)
+        fileProperties()
     }
 }

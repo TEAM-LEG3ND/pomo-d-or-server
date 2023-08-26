@@ -9,10 +9,10 @@ import org.koin.core.annotation.Single
 
 @Single
 class UserRepository : UserDatabasePort {
-    override fun create(newUser: User): User {
+    override fun create(universalId: String, nickname: String): User {
         val createdUser = UserEntity.new {
-            universalId = newUser.universalId
-            nickname = newUser.nickname
+            this.universalId = universalId
+            this.nickname = nickname
         }
 
         return UserMapper.mapToDomain(createdUser)

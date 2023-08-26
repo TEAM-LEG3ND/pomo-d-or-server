@@ -30,6 +30,10 @@ subprojects {
     }
 
     dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+        implementation("ch.qos.logback:logback-classic:1.4.11")
+
         implementation("io.insert-koin:koin-core:$koinVersion")
         implementation("io.insert-koin:koin-annotations:$koinKspVersion")
         ksp("io.insert-koin:koin-ksp-compiler:$koinKspVersion")

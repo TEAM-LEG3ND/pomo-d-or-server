@@ -4,6 +4,7 @@ val ktorVersion: String by project
 plugins {
     kotlin("jvm") version "1.9.0"
     id("org.jmailen.kotlinter") version "3.16.0"
+    id("io.ktor.plugin") version "2.3.3"
 }
 
 group = "com.leg3nd"
@@ -24,10 +25,11 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("com.mysql:mysql-connector-j:8.1.0")
 
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-cio:$ktorVersion")
-    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-cio")
+    implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
+    implementation("io.ktor:ktor-client-logging")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")

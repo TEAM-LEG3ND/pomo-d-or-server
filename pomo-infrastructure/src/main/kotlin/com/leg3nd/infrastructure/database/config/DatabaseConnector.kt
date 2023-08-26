@@ -8,16 +8,21 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.experimental.withSuspendTransaction
 import org.jetbrains.exposed.sql.transactions.transactionManager
+import org.koin.core.annotation.Property
 import org.koin.core.annotation.Single
 
 @Single
-class DatabaseConnector : TransactionPort {
+class DatabaseConnector(
+    @Property("database.jdbcUrl") jdbcUrl: String,
+    @Property("database.username") username: String,
+    @Property("database.password") password: String,
+) : TransactionPort {
 
     private val ds = HikariDataSource(
         HikariConfig().apply {
-            jdbcUrl = "url"
-            username = "username"
-            password = "password"
+            this.jdbcUrl = jdbcUrl
+            this.username = username
+            this.password = password
             driverClassName = "com.mysql.cj.jdbc.Driver"
             maximumPoolSize = 20
             isAutoCommit = false
