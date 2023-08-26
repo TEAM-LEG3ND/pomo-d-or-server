@@ -10,7 +10,9 @@ import com.leg3nd.infrastructure.database.mapper.UserMapper
 import com.leg3nd.infrastructure.database.table.PomodoroTimers
 import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.update
+import org.koin.core.annotation.Single
 
+@Single
 class PomodoroTimerRepository : PomodoroTimerDatabasePort {
     override fun create(newPomodoroTimer: PomodoroTimer): PomodoroTimer {
         val createdTimer = PomodoroTimerEntity.new {

@@ -8,7 +8,9 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.experimental.withSuspendTransaction
 import org.jetbrains.exposed.sql.transactions.transactionManager
+import org.koin.core.annotation.Single
 
+@Single
 class DatabaseConnector : TransactionPort {
 
     private val ds = HikariDataSource(

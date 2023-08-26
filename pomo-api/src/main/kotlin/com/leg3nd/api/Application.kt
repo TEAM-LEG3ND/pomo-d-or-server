@@ -1,16 +1,19 @@
 package com.leg3nd.api
 
+import com.leg3nd.api.config.configureKoin
+import com.leg3nd.api.config.configureRoute
+import com.leg3nd.api.config.configureSerialization
+import com.leg3nd.api.config.configureSwagger
+import com.leg3nd.api.config.warmUp
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module() {
-    routing {
-        get("/") {
-            call.respondText("Hello, world!")
-        }
-    }
+    configureSerialization()
+    configureSwagger()
+    configureKoin()
+    configureRoute()
+    warmUp()
 }
