@@ -8,7 +8,9 @@ import com.leg3nd.infrastructure.database.mapper.PomodoroTimerEventMapper
 import com.leg3nd.infrastructure.database.mapper.PomodoroTimerMapper
 import com.leg3nd.infrastructure.database.mapper.UserMapper
 import com.leg3nd.infrastructure.database.table.PomodoroTimerEvents
+import org.koin.core.annotation.Single
 
+@Single
 class PomodoroTimerEventRepository : PomodoroTimerEventDatabasePort {
     override fun create(newPomodoroTimerEvent: PomodoroTimerEvent): PomodoroTimerEvent {
         val createdEvent = PomodoroTimerEventEntity.new {

@@ -3,7 +3,9 @@ package com.leg3nd.domain.core.service
 import com.leg3nd.domain.core.model.User
 import com.leg3nd.domain.ports.client.AccountClientPort
 import com.leg3nd.domain.ports.database.UserDatabasePort
+import org.koin.core.annotation.Single
 
+@Single
 class UserService(
     private val userDatabasePort: UserDatabasePort,
     private val accountClientPort: AccountClientPort,

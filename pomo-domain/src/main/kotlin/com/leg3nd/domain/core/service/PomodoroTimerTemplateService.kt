@@ -3,7 +3,9 @@ package com.leg3nd.domain.core.service
 import com.leg3nd.domain.core.model.PomodoroTimerTemplate
 import com.leg3nd.domain.core.model.User
 import com.leg3nd.domain.ports.database.PomodoroTimerTemplateDatabasePort
+import org.koin.core.annotation.Single
 
+@Single
 class PomodoroTimerTemplateService(
     private val pomodoroTimerTemplateDatabasePort: PomodoroTimerTemplateDatabasePort,
 ) {

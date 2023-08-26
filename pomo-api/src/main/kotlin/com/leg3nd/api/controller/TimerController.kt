@@ -12,7 +12,9 @@ import com.leg3nd.domain.application.dto.CreateTimerEventRequest
 import com.leg3nd.domain.application.dto.StartAnonymousTimerRequest
 import com.leg3nd.domain.application.dto.StartSignedTimerRequest
 import com.leg3nd.domain.ports.application.TimerApplicationPort
+import org.koin.core.annotation.Single
 
+@Single
 class TimerController(
     private val timerApplicationPort: TimerApplicationPort,
 ) {

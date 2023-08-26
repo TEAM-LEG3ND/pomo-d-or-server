@@ -15,8 +15,10 @@ import com.leg3nd.domain.core.service.UserService
 import com.leg3nd.domain.exception.BaseException
 import com.leg3nd.domain.ports.application.TimerApplicationPort
 import com.leg3nd.domain.ports.database.TransactionPort
+import org.koin.core.annotation.Single
 import java.time.OffsetDateTime
 
+@Single
 class TimerApplication(
     private val userService: UserService,
     private val pomodoroTimerService: PomodoroTimerService,

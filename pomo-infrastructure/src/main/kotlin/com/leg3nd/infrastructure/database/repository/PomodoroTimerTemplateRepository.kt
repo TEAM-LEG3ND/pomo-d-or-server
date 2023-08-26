@@ -7,7 +7,9 @@ import com.leg3nd.infrastructure.database.entity.PomodoroTimerTemplateEntity
 import com.leg3nd.infrastructure.database.mapper.PomodoroTimerTemplateMapper
 import com.leg3nd.infrastructure.database.mapper.UserMapper
 import com.leg3nd.infrastructure.database.table.PomodoroTimerTemplates
+import org.koin.core.annotation.Single
 
+@Single
 class PomodoroTimerTemplateRepository : PomodoroTimerTemplateDatabasePort {
     override fun create(newPomodoroTimerTemplate: PomodoroTimerTemplate): PomodoroTimerTemplate {
         val createdTemplate = PomodoroTimerTemplateEntity.new {

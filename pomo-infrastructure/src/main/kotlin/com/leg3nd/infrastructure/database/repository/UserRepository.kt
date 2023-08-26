@@ -5,7 +5,9 @@ import com.leg3nd.domain.ports.database.UserDatabasePort
 import com.leg3nd.infrastructure.database.entity.UserEntity
 import com.leg3nd.infrastructure.database.mapper.UserMapper
 import com.leg3nd.infrastructure.database.table.Users
+import org.koin.core.annotation.Single
 
+@Single
 class UserRepository : UserDatabasePort {
     override fun create(newUser: User): User {
         val createdUser = UserEntity.new {
